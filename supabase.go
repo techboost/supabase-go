@@ -93,9 +93,9 @@ func (c *Client) sendCustomRequest(req *http.Request, successValue interface{}, 
 	defer res.Body.Close()
 	statusOK := res.StatusCode >= http.StatusOK && res.StatusCode < 300
 	if !statusOK {
-		if err = json.NewDecoder(res.Body).Decode(&errorValue); err == nil {
-			return true, nil
-		}
+		// if err = json.NewDecoder(res.Body).Decode(&errorValue); err == nil {
+		// 	return true, nil
+		// }
 
 		return false, fmt.Errorf("unknown, status code: %d", res.StatusCode)
 	} else if res.StatusCode != http.StatusNoContent {
